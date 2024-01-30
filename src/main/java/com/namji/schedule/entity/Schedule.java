@@ -35,4 +35,15 @@ public class Schedule extends Timestamped {
         this.user = requestDto.getUser();
         this.password = requestDto.getPassword();
     }
+
+    public Schedule(Long id) {
+        super();
+    }
+
+    public void update (ScheduleRequestDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+        this.user = requestDto.getUser();
+        this.password = requestDto.getPassword();
+    }
 }

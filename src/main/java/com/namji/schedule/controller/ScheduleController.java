@@ -7,6 +7,7 @@ import com.namji.schedule.service.ScheduleService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -24,8 +25,22 @@ public class ScheduleController {
     }
 
     @GetMapping("/schedule")
-    public List<Schedule> getSchedule() {
-        return scheduleService.getSchedule();
+    public List<Schedule> getSchedules() {
+        return scheduleService.getSchedules();
     }
 
+    @GetMapping("/schedule/{id}")
+    public Optional<Schedule> selectSchedule (@PathVariable Long id) {
+        return scheduleService.selectSchedule(id);
+    }
+
+    @PutMapping("/schedule/{id}")
+    public ScheduleResponseDto updateSchedule (@PathVariable Long id, @RequestBody ScheduleRequestDto requestDto) {
+        return scheduleService.updateSchedule(id, requestDto);
+    }
+
+    @DeleteMapping("/schedule/{id}")
+    public String deleteSchedule (@PathVariable Long id) {
+        return scheduleService.deleteSchedule(id);
+    }
 }
